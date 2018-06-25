@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pylint = "*"
+pafy = "*"
+youtube-dl = "*"
+opencv-python = "*"
+requests = "*"
+tensorflow-gpu = "*"
+django = "*"
+"django-bootstrap4" = "*"
+mysqlclient = "*"
+pymysql = "*"
+"psycopg2" = "*"
+matplotlib = "*"
+sklearn = "*"
+google-images-download = "*"
+opencv-contrib-python = "*"
+scikit-image = "*"
+scipy = "*"
+pandas = "*"
+
+[dev-packages]
+pylint = "*"
+
+[requires]
+python_version = "3.6.5"
