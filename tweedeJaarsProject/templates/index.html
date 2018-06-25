@@ -30,5 +30,21 @@
       </div>
 </section>
 
+<p>Totale dataset: {{ total }} </p>
+
+<div>
+{% for key, values in stats_class.items %}
+<p>{{ key }} has {{ values }} dataimages </p>
+
+{% endfor %}
+</div>
+
+<div>
+  {% for key, values in stats_method.items %}
+  <p>{{ key }} generated {{ values }} dataimages </p>
+  
+  {% endfor %}
+</div>
+
 
 {% endblock %}

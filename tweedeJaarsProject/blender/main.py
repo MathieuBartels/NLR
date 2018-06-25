@@ -150,10 +150,20 @@ def change_background(new_direc, old_name):
     bpy.ops.object.delete()
     add_background(new_direc)   
 
+def get_max_image_num(directory):
+    max = 0
+    for image in os.listdir(directory):
+        if ".jpg" in image:
+            num = int(image.split('_')[-1].replace(".jpg", ""))
+            if num > max:
+                max = num
+    return max
+
 # loops through the different backgrounds and depending on the amount of pictures
 # you gave, makes an amount of rotated pictures on 5 locations on the image
 # and writes those images to the file 'frames' in the Blender folder
 def main():
+    max_id = get_max_image_num("../images")
     bpy.ops.object.select_all(action='DESELECT')
     ob = bpy.context.scene.objects[model]
     rotate_by = round(360/internal_amount)
@@ -163,7 +173,7 @@ def main():
     # bounding_box = [bounding_box_amount[0],bounding_box_amount[1]+counter]
     # loop over the backgrounds in the background folder, the first loop is for the bounding box pictures
     for z in range(len(background_directorys) + 1):
-        counter = 0
+        counter = max_id
         if z == 0:
             bpy.ops.object.select_all(action='DESELECT')
             for item in bpy.data.materials:
