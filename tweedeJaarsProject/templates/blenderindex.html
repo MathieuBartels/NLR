@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<h1>Blender page,</h1>
+<form class="form-signin" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h2 class="form-signin-heading"> Upload Backgrounds and model! </h2>
+    <b > Path to blender file </b>
+    <input name="path" type="text" id="path" class="form-control" placeholder="path to blender" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+    
+    <b >Model</b>
+    <input type="file" name="Model" class="form-control">
+
+    <b>Background images</b>
+    <input type="file" name="backgroundImage" class="form-control" multiple>
+
+    <b >Number of images</b>
+    <input type="number" name="number" id="number" step="1"  class="form-control" placeholder="1000" >
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Run Model!</button>
+  </form>
+
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Download and install Blender (version 2.79b) from the following website: https://www.blender.org/download/ </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Download a 3D model that can be used in Blender</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td> Download image(s) that can be used as background for the drone. </td>
+      </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td> Make sure you know the path of the Blender.exe file </td>
+    </tr>
+    <tr>
+        <th scope="row">5</th>
+        <td>  Specify how many images you want to be generated </td>
+      </tr>
+
+  </tbody>
+</table>
+
+<p>The generated images will be inside the folder “images”, together with a csv file where, for all images, the location of the bounding box is specified.
+  </p>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<h1>Video scrape page,</h1>
+<form class="form-signin" action="/videoscrape/" method="post">
+    {% csrf_token %}
+    <h2 class="form-signin-heading">Chose parameters for video scraping</h2>
+    <label for="inputYoutube" class="sr-only">youtube link</label>
+    <input name="youtube" type="url" id="inputYoutube" class="form-control" placeholder="youtube_link" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+    <label for="inputName" class="sr-only">Password</label>
+    <input name="name" type="text" id="inputName" class="form-control" placeholder="video name" required="" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Process video!</button>
+  </form>
+  <br>
+  <h2>How to use video scrape?</h2>
+  <p>To start using video scrape find a youtube link that contains your object of interest.</p>
+  <p>For example https://www.youtube.com/watch?v=Gs0RJB30sc4 . This is a video that contains a DJI Phantom 4 quadcopter
+    We insert the youtube link in the form and name the video as we like, (DJIPhantom for example). 
+    The video will be stored in /static/video/videoname. The frames will be stored in ../images with a csv that contains the 
+    bounding box.
+  </p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Key</th>
+        <th scope="col">Action</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">s</th>
+        <td>Select region of interest</td>
+        <td>The video will start playing, when "s" is pressed you can select the region of interest</td>
+      </tr>
+      <tr>
+        <th scope="row">r</th>
+        <td>Retrack</td>
+        <td>When the program is following the object, but the bounding box is not optimal, you can retrack it if r is pressed</td>
+      </tr>
+      <tr>
+        <th scope="row">q</th>
+        <td>Quit</td>
+        <td>Q has 2 actions. It will submit the region of interest after it's drawn, and it will terminate the program when pressed
+          during showing the video
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}

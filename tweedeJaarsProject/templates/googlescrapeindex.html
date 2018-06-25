@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<h1>Google scrape page,</h1>
+
+{% if form %}
+<form class="form-signin" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2 class="form-signin-heading">Chose parameters for Google image scraping</h2>
+    <label for="inputQuery" class="sr-only">Search Query</label>
+    <input name="query" type="text" id="inputQuery" class="form-control" placeholder="search query" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+    <label for="inputFile" class="sr-only">Gouden standaard image</label>
+    <input type="file" name="myfile" class="form-control">
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Process Query!</button>
+  </form>
+{% endif %}
+
+<p>You are now on the google scraping page. On this page you can see two things; a text input field and an upload field. The text input is meant for the query that the image scraping tool will use to scrape the images. The upload field is meant 
+</p>
+<p>
+  Within the text field is a search query posted, for example the name of a drone which is wanted in the database. After that, the upload field is used to upload a golden standard image, which visualize the object from the search query. 
+</p> 
+<p>
+  The scraped images are compared to the golden standard. The extracted features from the scraped images will be compared to the features of the golden standard. Once the extracted features of the scraped images are similar enough to be classified as a correct image, it will be added to a folder called “Good images”. More about this method can be read in the report.
+</p>  
+<p>
+  Some things to be mentioned about a good golden standard is, that it is handy to use a photo which does not contain much noise. While otherwise also features from this noise are used in the comparison. 
+</p>  
+<p>
+  An image which consists the object as complete as possible is also something to search for. While this gives the opportunity to get many as possible features from the object which can be compared with other images which might have another view on the object. 
+  </p>
+
+{% if url_list %}
+<div class="row">
+    {% for url in url_list %}
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="{{ url }}" data-holder-rendered="true">   
+      </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endif %}
+
+{% endblock %}

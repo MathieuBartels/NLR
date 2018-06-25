@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<h1>Index Page,</h1>
+<h2>Chose scraping method:</h2>
+
+<section class="row text-center placeholders">
+    <div class="row">
+        <div class="col-md-4">
+          <a href="/videoscrape">
+              <div class="card mb-4 box-shadow">
+              <img src={% static "media/camera.png" %} width="200" height="200" class="img-fluid rounded-circle" alt="camera tumbnail">
+            </div>
+          </a>
+          </div>
+        <div class="col-md-4">
+            <a href="/googlescrape">
+            <div class="card mb-4 box-shadow">
+            <img src={% static "media/google.png" %} width="200" height="200" class="img-fluid rounded-circle" alt="camera tumbnail">
+          </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/blender">
+            <div class="card mb-4 box-shadow">
+            <img src={% static "media/blender.png" %} width="200" height="200" class="img-fluid rounded-circle" alt="camera tumbnail">
+          </div>
+          </a>
+        </div>
+      </div>
+</section>
+
+
+{% endblock %}

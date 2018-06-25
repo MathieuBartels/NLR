@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <form action="/your-name/" method="post">
+            {% csrf_token %}
+            {{ datarowform }}
+            <input type="submit" value="Submit" />
+        </form>        
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <form action="/your-name/" method="post">
+            {% csrf_token %}
+            {{ databaseform }}
+            <input type="submit" value="Submit" />
+        </form>        
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4 box-shadow">
+        <form action="/your-name/" method="post">
+            {% csrf_token %}
+            {{ internetform }}
+            <input type="submit" value="Submit" />
+        </form>        
+      </div>
+    </div>
+  </div>  
+{% endblock %}
